@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2240 500" width="2240" height="500">
+<title>ChromaGate</title>
+<defs><linearGradient id="spectrum" gradientUnits="userSpaceOnUse" x1="50" y1="0" x2="1300" y2="0"><stop offset="0" stop-color="#ff4d6d"/><stop offset="0.3" stop-color="#ff9a3c"/><stop offset="0.55" stop-color="#ffd23f"/><stop offset="0.78" stop-color="#3bceac"/><stop offset="1" stop-color="#4d8dff"/></linearGradient></defs>
+<g fill="none" stroke-width="24" stroke-linecap="round" stroke-linejoin="round">
+<g stroke="url(#spectrum)">
+<path d="M 272 184 A 122 122 0 1 0 272 349"/>
+<path d="M 335 104 L 335 388"/><path d="M 335 320 A 67 67 0 0 1 469 320 L 469 388"/>
+<path d="M 533 388 L 533 320 A 67 67 0 0 1 600 253 L 617 253"/>
+<circle cx="747" cy="320" r="68"/>
+<path d="M 877 388 L 877 304 A 53 53 0 0 1 983 304 L 983 388"/><path d="M 983 304 A 53 53 0 0 1 1089 304 L 1089 388"/>
+<circle cx="1210" cy="320" r="68"/><path d="M 1287 253 L 1287 388"/>
+</g>
+<path stroke="#ffb03a" d="M 1600 148 L 1380 148 L 1380 330 A 58 58 0 0 0 1438 388 L 1542 388 A 58 58 0 0 0 1600 330 L 1600 280 L 1500 280"/>
+<g stroke="#e8eaee">
+<circle cx="1730" cy="320" r="68"/><path d="M 1807 253 L 1807 388"/>
+<path d="M 1890 160 L 1890 350 A 38 38 0 0 0 1928 388 L 1940 388"/><path d="M 1855 253 L 1935 253"/>
+</g>
+<path stroke="#ffb03a" d="M 1990 320 L 2130 320 A 70 70 0 1 0 2060 390 L 2186 390 L 2186 300"/>
+</g>
+</svg>

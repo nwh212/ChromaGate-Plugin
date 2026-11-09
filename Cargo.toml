@@ -1,0 +1,25 @@
+[package]
+name = "chromagate"
+description = "Chromaforge plug-in: finds the film gate in scanned frames and sets a level, editable crop inside it"
+version = "0.4.0"
+edition = "2024"
+license = "MIT"
+publish = false
+
+[workspace]
+
+[lib]
+crate-type = ["cdylib", "rlib"]   # rlib: the detector's tests and the sample runner run natively
+
+[dependencies]
+# the SDK with photo.pixels / develop.setCrop; switch to emmertex/chromaforge once that's merged
+lcc-plugin-sdk = { git = "https://github.com/nwh212/chromaforge-plugins", branch = "plugin-pixels-crop" }
+
+[dev-dependencies]
+image = { version = "0.25", default-features = false, features = ["webp", "jpeg", "png", "tiff"] }
+
+[profile.release]
+opt-level = 3
+panic = "abort"
+lto = true
+strip = true

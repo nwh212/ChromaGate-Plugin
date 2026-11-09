@@ -1,0 +1,58 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  # publishing a release (tag vX.Y.Z) on GitHub builds and attaches chromagate-vX.Y.Z.wasm
+  release:
+    types: [published]
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          targets: wasm32-unknown-unknown
+          components: rustfmt, clippy
+      - run: cargo fmt --check
+      - run: cargo clippy --release --all-targets -- -D warnings
+      - run: cargo test --release
+      - run: cargo build --release --target wasm32-unknown-unknown
+      - uses: actions/upload-artifact@v4
+        with:
+          name: chromagate-wasm
+          path: target/wasm32-unknown-unknown/release/chromagate.wasm
+
+  release:
+    if: github.event_name == 'release'
+    needs: check
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    env:
+      TAG: ${{ github.event.release.tag_name }}
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          targets: wasm32-unknown-unknown
+      - name: Check the tag matches Cargo.toml
+        run: |
+          v=$(grep -m1 '^version' Cargo.toml | cut -d'"' -f2)
+          test "v$v" = "$TAG" || { echo "release tag $TAG but Cargo.toml says $v"; exit 1; }
+      - run: cargo build --release --target wasm32-unknown-unknown
+      - name: Attach the plug-in (and the changelog's notes when the release has none)
+        run: |
+          cp target/wasm32-unknown-unknown/release/chromagate.wasm "chromagate-$TAG.wasm"
+          gh release upload "$TAG" "chromagate-$TAG.wasm" --clobber
+          if [ -z "$(gh release view "$TAG" --json body --jq .body)" ]; then
+            notes=$(awk -v v="## ${TAG#v}" '$0 ~ "^"v {f=1; next} /^## / {f=0} f' CHANGELOG.md)
+            gh release edit "$TAG" --notes "$notes"
+          fi

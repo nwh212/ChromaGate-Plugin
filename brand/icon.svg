@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="512" height="512">
+<title>ChromaGate</title>
+<defs><linearGradient id="spectrum" gradientUnits="userSpaceOnUse" x1="66" y1="196" x2="186" y2="76"><stop offset="0" stop-color="#ff4d6d"/><stop offset="0.3" stop-color="#ff9a3c"/><stop offset="0.55" stop-color="#ffd23f"/><stop offset="0.78" stop-color="#3bceac"/><stop offset="1" stop-color="#4d8dff"/></linearGradient></defs>
+<rect x="8" y="8" width="240" height="240" rx="52" fill="none"/>
+<g fill="none" stroke-width="16" stroke-linecap="round" stroke-linejoin="round">
+<path stroke="url(#spectrum)" d="M 176 62 L 62 62 L 62 150 A 34 34 0 0 0 96 184 L 142 184 A 34 34 0 0 0 176 150 L 176 124 L 124 124"/>
+<path stroke="#ffb03a" d="M 152 210 L 210 210 L 210 152"/>
+</g>
+</svg>
