@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.4.1 (2026-11-09)
+
+- The Plug-in Manager's About tab links to ChromaGate's homepage, source code and changelog, shows
+  its licence (MIT), and offers Report a Problem (this repository's issues). Needs a Chromaforge
+  build with emmertex/chromaforge#1004; older builds ignore the links.
+
 ## 0.4.0 (2026-11-08)
 
 First release as ChromaGate (developed as "Film Auto-Crop").

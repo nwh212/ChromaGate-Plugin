@@ -1,9 +1,11 @@
 [package]
 name = "chromagate"
 description = "Chromaforge plug-in: finds the film gate in scanned frames and sets a level, editable crop inside it"
-version = "0.4.0"
+version = "0.4.1"
 edition = "2024"
 license = "MIT"
+homepage = "https://github.com/nwh212/ChromaGate-Plugin"
+repository = "https://github.com/nwh212/ChromaGate-Plugin"
 publish = false
 
 [workspace]
